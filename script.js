@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <select name="Invitado_${i}_Asistencia" class="rsvp-select-style" required>
                     <option value="">Selecciona una opción</option>
                     <option value="Si">¡Sí, confirmo!</option>
-                    <option value="No">No podrá asistir</option>
+                    <option value="No">No podré asistir</option>
                 </select>
 
                 <label class="input-label">Alergias o Restricciones</label>
@@ -148,51 +148,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }).catch(err => console.error(err));
         });
     }
-
-    // ==========================================
-    // 4. CONTROL DE MÚSICA
-    // ==========================================
-    
-    const musicBtn = document.getElementById('music-toggle');
-    const audio = document.getElementById('bg-music');
-    const iconPlay = document.getElementById('icon-play');
-    const iconPause = document.getElementById('icon-pause');
-    
-    let isPlaying = false;
-
-    // Función para alternar Play/Pausa
-    function toggleMusic() {
-        if (isPlaying) {
-            audio.pause();
-            iconPlay.classList.remove('hidden');
-            iconPause.classList.add('hidden');
-            musicBtn.classList.remove('music-playing'); // Quitar animación
-        } else {
-            audio.play().then(() => {
-                iconPlay.classList.add('hidden');
-                iconPause.classList.remove('hidden');
-                musicBtn.classList.add('music-playing'); // Poner animación
-            }).catch(error => {
-                console.log("Reproducción automática bloqueada por el navegador:", error);
-            });
-        }
-        isPlaying = !isPlaying;
-    }
-
-    if (musicBtn) {
-        musicBtn.addEventListener('click', toggleMusic);
-    }
-
-    // INTENTO DE AUTOPLAY AL PRIMER CLIC EN LA PÁGINA (UX Friendly)
-    // Esto es necesario porque los navegadores bloquean el autoplay
-    function startAudioOnFirstInteraction() {
-        if (!isPlaying) {
-            toggleMusic(); // Intenta reproducir
-            // Removemos el listener para que no se pause al siguiente clic
-            document.removeEventListener('click', startAudioOnFirstInteraction);
-        }
-    }
-    
-    // Agregamos el listener a todo el documento
-    document.addEventListener('click', startAudioOnFirstInteraction, { once: true });
 });
