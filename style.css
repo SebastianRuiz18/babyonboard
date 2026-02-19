@@ -1,0 +1,991 @@
+/* Declaración de la fuente personalizada */
+@font-face {
+    font-family: 'Darling Vintage';
+    src: url('fonts/Rose\ Mary-Regular.woff2') format('woff2'),
+         url('fonts/Rose\ Mary-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap; 
+}
+
+@font-face {
+    font-family: 'Bois de Jasmin';
+    src: url('fonts/Bois\ de\ Jasmin\ 1\ Sans-Regular.woff2') format('woff2'),
+         url('fonts/Bois\ de\ Jasmin\ 1\ Sans-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Variables y Paleta de Colores Extraída de la Imagen */
+:root {
+    --bg-white: #ffffff;
+    --stripe-pink: #fdf1f4; /* Rosa súper clarito de las rayas */
+    --accent-pink: #eb7a9c; /* Rosa de la tabla / letras principales */
+    --accent-green: #9ebf66; /* Verde de Jay & Johanna */
+    --text-dark: #4a4a4a;
+    --glass-bg: rgba(255, 255, 255, 0.75);
+}
+
+/* --- 1. RESET Y CANDADO ANTI-SCROLL HORIZONTAL --- */
+* {
+    box-sizing: border-box; /* Esto arregla el cálculo de anchos + padding */
+}
+
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden !important; /* Bloqueo forzoso horizontal */
+    position: relative; /* Ayuda a contener elementos absolutos */
+}
+
+/* Ajuste extra para el contenedor de decoraciones para asegurar que no empuje */
+.decorations {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden; /* Corta cualquier imagen que se salga */
+}
+
+/* 1. Limpiamos el html */
+html {
+    height: 100%;
+    /* Quitamos el background de aquí para que no se corte */
+}
+
+/* 2. El body se queda transparente */
+body {
+    margin: 0;
+    padding: 2rem 1rem; /* Padding original */
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text-dark);
+    background: transparent; 
+    display: flex;
+    flex-direction: column; /* Asegura flujo vertical */
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden; /* Candado doble por si acaso */
+}
+
+/* 3. SOLUCIÓN DEFINITIVA: Capa de fondo fija (Pseudo-elemento) */
+/* Esto crea un "papel tapiz" que está pegado a la pantalla, no al contenido */
+body::before {
+    content: "";
+    position: fixed; /* Esto es la clave: se queda fijo en la ventana */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Se manda hasta atrás de todo */
+    
+    /* Aquí va tu diseño de rayas */
+    background: repeating-linear-gradient(
+        90deg,
+        var(--bg-white),
+        var(--bg-white) 25px,
+        var(--stripe-pink) 25px,
+        var(--stripe-pink) 50px
+    );
+    
+    /* Truco para evitar parpadeos en iPhone */
+    -webkit-transform: translate3d(0,0,0);
+    pointer-events: none;
+}
+
+/* el Contenedor */
+.container {
+    max-width: 650px;
+    width: 100%;
+    padding: 3rem 2.5rem;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+    border-radius: 24px;
+}
+
+/* Tipografía de Títulos */
+h1, h2, h3 {
+    font-family: 'Darling Vintage', cursive, serif;
+    margin: 0;
+    font-size: 4rem;
+    color: var(--accent-pink);
+}
+
+h1 {
+    font-size: 4.5rem;
+    color: var(--accent-pink);
+    line-height: 1;
+    margin-top: 10px;
+}
+
+/* --- ESTILO TABLA DE SURF --- */
+.surfboard-img {
+    max-width: 100%;
+    width: 750px; /* Puedes hacerla más grande o pequeña cambiando este valor */
+    height: auto;
+    margin: 0 auto 1.5rem auto;
+    display: block;
+    /* Le agregamos una sombra sutil para que despegue del fondo igual que el resto del diseño */
+    filter: drop-shadow(0 8px 15px rgba(227, 106, 142, 0.3));
+    transition: transform 0.3s ease;
+}
+
+.surfboard-img:hover {
+    transform: scale(1.02); /* Un pequeño efecto de hover para que se vea interactivo */
+}
+
+.parents-name {
+    color: var(--accent-pink);
+    font-size: 6rem;
+    margin-bottom: 0.5rem;
+}
+.baby-name {
+    font-family: 'Darling Vintage', cursive, serif;
+    font-size: 8rem;
+    color: var(--accent-green);
+    line-height: 0.8;
+    margin: 0;
+}
+
+.subtitle {
+    font-family: 'Bois de Jasmin', cursive, serif;
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+    color: var(--text-dark);
+    opacity: 0.7;
+    margin: 1rem 0 0 0;
+}
+
+/* Separador Ondulado */
+.wavy-divider {
+    border: 0;
+    height: 8px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0,5 Q12.5,10 25,5 T50,5 T75,5 T100,5" fill="none" stroke="%23eb7a9c" stroke-width="2"/></svg>') repeat-x;
+    margin: 2.5rem 0;
+    opacity: 0.6;
+}
+
+/* Layout de Evento */
+.info-card {
+    background: rgba(255, 255, 255, 0.5);
+    padding: 1.5rem;
+    border-radius: 16px;
+    margin-top: 1.5rem;
+}
+
+.info-item {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.address {
+    font-size: 0.95rem;
+    color: #666;
+}
+
+/* Botones Premium */
+.btn-outline {
+    display: inline-block;
+    margin-top: 15px;
+    color: var(--accent-pink);
+    text-decoration: none;
+    font-weight: 600;
+    border: 2px solid var(--accent-pink);
+    padding: 8px 20px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    background: var(--accent-pink);
+    color: white;
+}
+
+.btn-solid {
+    background-color: var(--accent-pink);
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    font-size: 1.1rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 15px rgba(235, 122, 156, 0.4);
+}
+
+.btn-solid:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(235, 122, 156, 0.6);
+}
+
+/* Formularios */
+.input-wrapper {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.input-wrapper input {
+    width: 60%;
+    margin-top: 0;
+}
+
+input[type="text"], input[type="password"], select, textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    font-family: 'Montserrat', sans-serif;
+    background: rgba(255,255,255,0.8);
+    transition: border-color 0.3s;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent-pink);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+p {
+    font-family: 'Bois de Jasmin', sans-serif;
+    font-size: 1rem;
+}
+
+.hidden { display: none; }
+.error-msg { color: #e74c3c; font-size: 0.9rem; margin-top: 10px; }
+
+/* Posicionamiento de Decoraciones (Fondo) */
+.decorations {
+    position: fixed; /* Fijo para que no se muevan al hacer scroll */
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none; /* IMPORTANTE: permite dar clic a través de las imágenes */
+    z-index: 1; /* Detrás del contenedor principal */
+    overflow: hidden; /* Corta las imágenes si se salen de la pantalla */
+}
+
+/* Estilo base compartido para todas las imágenes deco */
+.deco {
+    position: absolute;
+    height: auto;
+    /* Una sombra suave para que las acuarelas "despeguen" del fondo */
+    filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.15));
+    /* Opcional: si quieres que sean un poco transparentes */
+    /* opacity: 0.95; */
+}
+/* Top Left (TL) - Hojas Verdes */
+.deco-tl {
+    top: -150px;
+    left: -20px;
+    max-width: 200px; /* Ajusta el tamaño aquí */
+}
+
+/* Top Right (TR) - Ramas Colgantes */
+.deco-tr {
+    top: -20px;
+    right: -20px;
+    max-width: 120px;
+}
+
+/* Middle Left (ML) - Concha Rosa */
+.deco-ml {
+    top: 55%; /* Centrado verticalmente */
+    left: 170px;
+    max-width: 150px;
+    transform: translateY(-50%) rotate(10deg);
+}
+
+/* Middle Right (MR) - Salvavidas */
+.deco-mr {
+    top: 50%; /* Centrado verticalmente */
+    right: 75px;
+    max-width: 200px;
+    transform: translateY(-50%) rotate(-5deg);
+}
+
+/* Bottom Left (BL) - Flores Pequeñas */
+.deco-bl {
+    bottom: -120px;
+    left: -290px;
+    max-width: 500px;
+    transform: rotate(15deg);
+}
+
+/* Bottom Right (BR) - Anturio Grande */
+.deco-br {
+    bottom: -120px;
+    right: 20px;
+    max-width: 180px;
+}
+
+.top-left { top: -20px; left: -20px; transform: rotate(15deg); }
+.top-right { top: -20px; right: -20px; transform: rotate(-15deg); }
+.mid-left { top: 45%; left: 2%; font-size: 5rem; transform: translateY(-50%) rotate(20deg); }
+.mid-right { top: 50%; right: 2%; font-size: 6rem; transform: translateY(-50%) rotate(-10deg); }
+.bot-left { bottom: -10px; left: 10px; transform: rotate(-20deg); }
+.bot-right { bottom: -10px; right: 10px; }
+
+/* Animación de entrada */
+.fade-in {
+    animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+    .surfboard-img { width: 260px; } /* Ajuste de la imagen para móviles */
+    h1 { font-size: 3.5rem; }
+    .parents-name { font-size: 2rem; }
+    .input-wrapper { flex-direction: column; }
+    .input-wrapper input { width: 100%; }
+}
+/* Reducimos el tamaño en pantallas pequeñas para que no estorben */
+@media (max-width: 768px) {
+    .deco {
+        /* Reducción general del tamaño para móviles */
+        max-width: 100px; 
+        opacity: 0.8; /* Un poco más transparentes en móvil para no distraer */
+    }
+    /* Puedes hacer ajustes específicos si alguna imagen tapa mucho texto en el cel */
+    .deco-tl { max-width: 130px; left: -10px; top: -10px; }
+    .deco-br { max-width: 120px; bottom: 0; }
+}
+
+/* --- SECCIÓN DE REGALOS (ACTUALIZADO) --- */
+.gift-section {
+    margin-top: 1rem;
+}
+
+.gift-intro {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    padding: 0 10px;
+    opacity: 0.9;
+}
+.gift-intro strong {
+    color: var(--accent-pink);
+    font-family: 'Darling Vintage', cursive;
+    font-size: 2rem;
+}
+
+.gift-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.gift-grid h3 {
+    font-family: 'Darling Vintage', cursive, serif;
+    font-size: 2.8rem;
+}
+
+.gift-grid p {
+    font-family: 'Bois de Jasmin', cursive, serif;
+    font-size: 2rem;
+    line-height: 1.4;
+}
+
+.gift-card {
+    background: rgba(255, 255, 255, 0.6);
+    padding: 1.5rem;
+    border-radius: 20px;
+    flex: 1;
+    min-width: 260px;
+    max-width: 320px; /* Limitamos el ancho para que se vean compactas */
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.gift-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.85);
+}
+
+.gift-icon {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.gift-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.gift-card p {
+    font-size: 0.9rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.4;
+}
+
+/* --- DISEÑO ZELLE PILL (NUEVO) --- */
+/* --- DISEÑO ZELLE (TEXTO LIMPIO, SIN CAJA) --- */
+.zelle-pill {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    
+    /* IMPORTANTE: Esto quita el fondo blanco y borde */
+    background-color: transparent; 
+    border: none;
+    box-shadow: none;
+    
+    width: 100%;
+    cursor: pointer;
+    margin-top: 5px;
+    padding: 5px;
+    transition: transform 0.2s;
+}
+
+.zelle-pill:active {
+    transform: scale(0.95);
+    background-color: transparent; 
+}
+
+.zelle-pill:hover {
+    transform: scale(1.05); /* Zoom suave */
+}
+
+.zelle-address {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700; /* Negrita */
+    color: var(--text-dark);
+    font-size: 1rem; /* Texto GRANDE */
+    letter-spacing: 1px;
+    text-decoration-color: var(--accent-pink);
+    text-underline-offset: 4px;
+}
+
+.copy-icon {
+    color: var(--accent-pink);
+    display: flex;
+    align-items: center;
+}
+
+/* Nota Lluvia de Sobres */
+.envelope-note {
+    margin-top: 10px;
+    font-size: 0.95rem;
+    opacity: 0.8;
+}
+
+.qr-container {
+    margin-bottom: 15px;
+    padding: 8px;
+    background: white;
+    border-radius: 12px;
+}
+.qr-code { width: 110px; height: 110px; display: block; }
+.full-width { width: 100%; box-sizing: border-box; text-align: center; }
+
+/* Feedback */
+.copy-msg {
+    font-size: 0.8rem;
+    color: var(--accent-green);
+    margin-top: 8px;
+    font-weight: 600;
+    animation: fadeInUp 0.3s ease;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   RSVP WAVY CARD
+========================================= */
+
+
+
+/* --- ESTILOS DE TEXTO Y FORMULARIO (Mismos de antes) --- */
+
+.script-title {
+  font-family: 'Darling Vintage', cursive;
+  font-size: 4rem;
+  line-height: 0.8;
+  margin: 0 0 20px 0;
+  color: var(--accent-pink);
+  font-weight: normal;
+}
+
+.script-title-small {
+  font-family: 'Darling Vintage', cursive;
+  font-size: 3rem;
+  line-height: 1;
+  margin: 0 0 15px 0;
+  color: var(--accent-pink);
+}
+
+.instruction-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  color: #666;
+}
+
+.deadline-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+  color: #888;
+}
+
+.input-wrapper-centered {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.rsvp-code-style {
+  width: 100%;
+  max-width: 250px;
+  padding: 10px;
+  text-align: center;
+  border: none;
+  border-bottom: 1px solid var(--text-dark);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 3px;
+  margin-bottom: 30px;
+  outline: none;
+  text-transform: uppercase;
+  background: transparent;
+  transition: border-color 0.3s;
+  border-radius: 0;
+}
+
+.rsvp-code-style:focus {
+  border-bottom: 2px solid var(--accent-pink);
+}
+
+.editorial-btn {
+  background: var(--accent-pink);
+  color: #fff;
+  padding: 14px 40px;
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 2px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  margin-top: 10px;
+  border-radius: 25px;
+}
+
+.editorial-btn:hover {
+  background: #d46b89;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(235, 122, 156, 0.4);
+}
+
+.editorial-btn.full-width {
+  width: 100%;
+}
+
+/* Estilos del Formulario Interno */
+.guest-block, .common-fields {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.input-label {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+.rsvp-input-style, .rsvp-select-style {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+  background-color: #fafafa;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  outline: none;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+
+.rsvp-input-style:focus, .rsvp-select-style:focus {
+  border-color: var(--accent-pink);
+  background-color: #fff;
+}
+
+.common-field-title {
+  font-family: 'Darling Vintage', cursive;
+  font-size: 1.8rem;
+  margin: 20px 0 15px 0;
+  text-align: center;
+  color: var(--accent-pink);
+}
+
+.success-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.success-divider {
+  width: 50px;
+  height: 1px;
+  background: var(--accent-pink);
+  margin: 0 auto 20px auto;
+}
+
+.success-subtext {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #888;
+}
+
+/* Responsivo para móviles */
+@media (max-width: 600px) {
+  .rsvp-card-inner {
+    padding: 60px 40px; 
+  }
+  
+  /* Ajustar el borde interno en móviles */
+  .rsvp-card-inner::before {
+    top: 8px; left: 8px; right: 8px; bottom: 8px;
+  }
+  .rsvp-card-inner::after {
+    top: 10px; left: 10px; right: 10px; bottom: 10px;
+  }
+
+  .script-title { font-size: 3rem; }
+  .script-title-small { font-size: 2.5rem; }
+}
+
+/* Utilidades */
+.hidden { display: none !important; }
+.error-msg { color: #e74c3c; font-size: 0.8rem; margin-top: 15px; }
+.fade-in-up { animation: fadeInUp 0.6s ease forwards; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================
+   SECCIÓN DE DETALLES DEL EVENTO (MINIMALISTA)
+   ============================================ */
+
+.event-info {
+    margin: 3rem 0;
+}
+
+.event-info h2 {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+    color: var(--accent-pink);
+}
+
+.info-card-elegant {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    padding: 3rem 2.5rem;
+    border-radius: 20px;
+    border: 2px solid rgba(235, 122, 156, 0.15);
+    box-shadow: 0 10px 30px rgba(235, 122, 156, 0.15);
+    max-width: 450px;
+    margin: 0 auto;
+    
+    /* Animación de entrada */
+    opacity: 0;
+    animation: fadeInScale 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.info-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.2rem 0;
+}
+
+.info-label {
+    font-family: 'Darling Vintage', cursive;
+    font-size: 2.4rem;
+    letter-spacing: 2px;
+    color: var(--accent-pink);
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+}
+
+.info-value {
+    font-family: 'Bois de Jasmin', sans-serif;
+    font-size: 1.8rem;
+    color: var(--text-dark);
+    line-height: 1.3;
+}
+
+.info-address {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    color: #666;
+    margin-top: 0.5rem;
+    line-height: 1.6;
+}
+
+/* Divisor decorativo entre filas */
+.divider-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--accent-pink);
+    border-radius: 50%;
+    margin: 1rem auto;
+    opacity: 0.4;
+}
+
+/* Botón de Maps centrado */
+.maps-btn {
+    display: inline-block;
+    margin-top: 2rem;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+    .info-card-elegant {
+        padding: 2.5rem 1.8rem;
+    }
+    
+    .info-value {
+        font-size: 1.5rem;
+    }
+}
+
+/* --- ESTILOS PARA FORMULARIO DINÁMICO --- */
+
+.guest-block {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.guest-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+.guest-number {
+    font-family: 'Darling Vintage', cursive;
+    font-size: 1.8rem;
+    color: var(--accent-pink);
+}
+
+.guest-badge {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    background: var(--stripe-pink);
+    color: var(--text-dark);
+    padding: 2px 8px;
+    border-radius: 10px;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+/* Divisor sutil entre invitados */
+.divider-small {
+    height: 1px;
+    background: #eee;
+    margin: 30px 0;
+    width: 100%;
+}
+
+/* --- FOOTER FIRMA (DISCRETO) --- */
+footer {
+    text-align: center;
+    padding-top: 40px; /* Un poco de aire al final */
+    width: 100%;
+    position: relative;
+    z-index: 10;
+}
+
+footer a {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.65rem; /* Tamaño pequeño y elegante */
+    text-transform: uppercase; /* Todo mayúsculas para look editorial */
+    letter-spacing: 3px; /* Mucho aire entre letras */
+    color: var(--text-dark);
+    opacity: 0.4; /* Transparente para que no distraiga */
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+footer a:hover {
+    opacity: 1; /* Se hace visible al pasar el mouse */
+    color: var(--accent-pink); /* Se pone rosa */
+    letter-spacing: 4px; /* Sutil animación de expansión */
+    cursor: pointer;
+}
+
+/* --- AJUSTES PARA CELULAR (Mobile) --- */
+@media (max-width: 768px) {
+
+    /* Main info */
+    .surfboard-img {
+    max-width: 100%;
+    width: 750px; /* Puedes hacerla más grande o pequeña cambiando este valor */
+}
+
+.parents-name {
+    font-size: 4rem;
+    
+}
+.baby-name {
+    font-size: 6rem;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+}
+
+    /* Top Left (TL) - Hojas Verdes */
+    .deco-tl {
+        max-width: 140px; /* Tamaño más chico */
+        top: -20px;       /* Ajusta altura */
+        left: -20px;      /* Ajusta lado */
+    }
+
+    /* Top Right (TR) - Ramas Colgantes */
+    .deco-tr {
+        max-width: 90px;
+        top: -10px;
+        right: -10px;
+    }
+
+    /* Middle Left (ML) - Concha Rosa */
+    .deco-ml {
+        max-width: 80px;
+        top: 60%;      /* En cel a veces estorba a la mitad, prueba subirla o bajarla */
+        left: -10px;   /* Pegada al borde */
+        /* Si quieres que se esconda en celular, descomenta la linea de abajo: */
+        /* display: none; */ 
+    }
+
+    /* Middle Right (MR) - Salvavidas */
+    .deco-mr {
+        max-width: 90px;
+        top: 60%; 
+        right: -15px; /* Pegado al borde derecho */
+    }
+
+    /* Bottom Left (BL) - Flores Pequeñas */
+    .deco-bl {
+        max-width: 150px;
+        bottom: 0px;
+        left: -10px;
+    }
+
+    /* Bottom Right (BR) - Anturio Grande */
+    .deco-br {
+        max-width: 120px;
+        bottom: -10px;
+        right: -10px;
+    }
+}
+
+/* --- BOTÓN DE MÚSICA FLOTANTE --- */
+.music-floating-btn {
+    position: fixed; /* ESTO HACE QUE SIGA LA PANTALLA */
+    bottom: 30px;    /* Lo subí un poco (de 20 a 30) para evitar la barra de iOS */
+    left: 30px;      /* Un poco más de aire a la izquierda */
+    width: 55px;     /* Ligeramente más grande para tocarlo fácil con el dedo */
+    height: 55px;
+    border-radius: 50%; 
+    background-color: var(--accent-pink); 
+    color: var(--bg-white); 
+    border: 2px solid var(--accent-pink); 
+    
+    /* Z-Index MUY alto para asegurar que flote sobre todo lo demás */
+    z-index: 99999; 
+    
+    cursor: pointer; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4); /* Sombra más fuerte para que destaque */
+    transition: transform 0.3s ease, background-color 0.3s;
+    
+    /* Evita que al hacer zoom en móvil el botón se pierda o haga cosas raras */
+    -webkit-transform: translateZ(0);
+}
+
+/* Music */
+.music-floating-btn:hover {
+    transform: scale(1.1); /* Efecto zoom al pasar mouse */
+    background-color: var(--accent-pink);
+}
+
+.music-floating-btn svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Animación de pulso cuando está sonando (Opcional) */
+.music-playing {
+    animation: music-pulse 2s infinite;
+}
+
+@keyframes music-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(235, 122, 156, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(235, 122, 156, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(235, 122, 156, 0); }
+}
+
+.hidden { display: none !important; }
+
+/* --- CORRECCIÓN DE POSICIÓN PARA MÓVIL --- */
+@media (max-width: 768px) {
+    .music-floating-btn {
+        /* Lo subimos bastante para librar la barra de direcciones/navegación del celular */
+        bottom: 90px !important; 
+        left: 20px !important;
+        
+        /* Ajuste extra para iPhones modernos con la barrita negra abajo */
+        margin-bottom: env(safe-area-inset-bottom);
+    }
+}

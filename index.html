@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baby Shower - Jade</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="decorations">
+        <img src="img/hojas-top-left.png" alt="" class="deco deco-tl">
+        <img src="img/ramas-top-right.png" alt="" class="deco deco-tr">
+        <img src="img/concha-mid-left.png" alt="" class="deco deco-ml">
+        <img src="img/salvavidas-mid-right.png" alt="" class="deco deco-mr">
+        <img src="img/flores-bot-left.png" alt="" class="deco deco-bl">
+        <img src="img/anturio-bot-right.png" alt="" class="deco deco-br">
+    </div>
+
+    <main class="container wavy-container fade-in">
+        <header class="hero">
+            <img src="img/surfboard.png" alt="Baby Shower" class="surfboard-img">
+            
+            <h3 class="parents-name">Jay & Johanna</h3>
+            <p class="subtitle">celebran la llegada de</p>
+            <h1 class="baby-name">Jade</h1>
+        </header>
+
+        <hr class="divider-dot">
+
+        <section class="event-info">
+            <h2>Detalles del Evento</h2>
+            <div class="info-card-elegant">
+                <div class="info-row">
+                    <span class="info-label">Fecha</span>
+                    <span class="info-value">20 de Junio, 2026</span>
+                </div>
+                
+                <hr class="wavy-divider">
+                
+                <div class="info-row">
+                    <span class="info-label">Hora</span>
+                    <span class="info-value">4:00 PM - 9:00 PM</span>
+                </div>
+                
+                <hr class="wavy-divider">
+                
+                <div class="info-row">
+                    <span class="info-label">Lugar</span>
+                    <span class="info-value">The Grand Loft</span>
+                    <span class="info-address">57 Murray St, Elizabeth, NJ 07202</span>
+                </div>
+                
+                <a href="https://maps.app.goo.gl/MRHn3G58HyuKx4FaA" class="btn-outline maps-btn" id="maps-placeholder" target="_blank">Ver en Google Maps</a>
+            </div>
+        </section>
+
+        <section class="dress-code">
+            <h3>Dress Code</h3>
+            <p class="gift-intro"><strong>Summer Vibe.</strong> No hay reglas estrictas, ponte lo que te haga sentir más fresco, cómodo y libre para celebrar!</p>
+        </section>
+
+        <hr class="wavy-divider">
+
+        <section class="gift-section">
+            <h2>Mesa de Regalos</h2>
+            <p class="gift-intro">
+                Su presencia es nuestro mayor regalo. Si desean tener un detalle con Jade, 
+                agradecemos su apoyo a través de las siguientes opciones:
+            </p>
+
+            <div class="gift-grid">
+                <div class="gift-card">
+                    <h3 style="font-size: 2.8rem;">Amazon Registry</h3>
+                    <p>Lista de deseos con artículos seleccionados.</p>
+                    <a href="https://www.amazon.com/baby-reg/" target="_blank" class="btn-outline full-width">Ver Lista</a>
+                </div>
+
+                <div class="gift-card">
+                    <h3 style="font-size: 2.8rem;">Zelle</h3>
+                    <p>Para aportaciones digitales voluntarias.</p>
+                    
+                    <div class="qr-container">
+                        <img src="img/qr-placeholder.png" alt="QR Zelle" class="qr-code">
+                    </div>
+
+                    <div class="zelle-pill" id="btn-copy">
+                        <span id="zelle-text" class="zelle-address">jay@ejemplo.com</span>
+                        <span class="copy-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        </span>
+                    </div>
+                    <span id="copy-feedback" class="copy-msg hidden">¡Copiado!</span>
+                </div>
+            </div>
+
+            <div class="envelope-note">
+                <p>También contaremos con buzón para <strong>Lluvia de Sobres</strong> el día del evento.</p>
+            </div>
+        </section>
+
+        <hr class="wavy-divider">
+        
+        <section id="rsvp" class="rsvp-editorial-section">
+            <div class="container-narrow">
+                
+                <div id="rsvp-login-view" class="rsvp-card fade-in-up">
+                    <div class="rsvp-card-inner">
+                        <h2 class="script-title">Rsvp</h2>
+                        <p class="instruction-text">
+                            Hemos reservado un lugar especial para ti.<br>
+                            Por favor ingresa el código de acceso:
+                        </p>
+                        <div class="input-wrapper-centered">
+                            <input type="text" id="rsvp-code-input" placeholder="CÓDIGO" class="rsvp-code-style">
+                        </div>
+                        <button id="rsvp-check-btn" class="editorial-btn">ENTRAR</button>
+                        <p id="rsvp-error-msg" class="error-msg hidden">Código incorrecto, intenta de nuevo.</p>
+                    </div>
+                </div>
+
+                <div id="rsvp-form-view" class="rsvp-card hidden">
+                    <div class="rsvp-card-inner">
+                        <h2 class="script-title-small">Confirmación</h2>
+                        
+                        <form id="rsvp-form" action="https://formsubmit.co/TU-CORREO@GMAIL.COM" method="POST">
+                            
+                            <input type="hidden" name="_subject" value="Nueva RSVP Baby Shower Jade!">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_template" value="table">
+                            <input type="hidden" name="Codigo_Usado" id="hidden-code">
+
+                            <div id="dynamic-guests-container">
+                                </div>
+                            
+                            <div class="common-fields">
+                                <h3 class="common-field-title">Mensaje para Jade</h3>
+                                <textarea name="Mensaje_Para_Jade" id="message" class="rsvp-input-style" rows="3" placeholder="Escribe tus mejores deseos para la bebé..."></textarea>
+                            </div>
+                            
+                            <button type="submit" id="submit-btn" class="editorial-btn full-width">ENVIAR CONFIRMACIÓN</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="rsvp-success-msg" class="rsvp-card hidden">
+                    <div class="rsvp-card-inner flex-center">
+                        <h3 class="script-title">¡Gracias!</h3>
+                        <p class="success-text">Tu confirmación ha sido recibida.</p>
+                        <div class="success-divider"></div>
+                        <p class="success-subtext">Nos vemos en Junio para celebrar a Jade.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <footer>
+            <a href="https://www.instagram.com/madebysliver/" target="_blank">made by sliver</a>
+        </footer>
+    </main>
+
+        <button id="music-toggle" class="music-floating-btn" aria-label="Reproducir música">
+            <svg id="icon-play" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z"/>
+            </svg>
+            <svg id="icon-pause" class="hidden" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+            </svg>
+        </button>
+
+        <audio id="bg-music" loop>
+            <source src="music.ogg" type="audio/ogg">
+            Tu navegador no soporta audio.
+        </audio>
+    <script src="script.js"></script>
+</body>
+</html>
