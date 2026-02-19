@@ -469,6 +469,13 @@ p {
     text-decoration-color: var(--accent-pink);
     text-underline-offset: 4px;
 }
+/* --- FORZAR COLOR EN NÚMEROS DE TELÉFONO (SAFARI/IOS) --- */
+.zelle-address,
+.zelle-address a,
+a[href^="tel"] {
+    color: var(--text-dark) !important; /* Fuerza tu color gris/negro */
+    text-decoration-color: var(--accent-pink) !important; /* Mantiene tu línea rosa */
+}
 
 .copy-icon {
     color: var(--accent-pink);
