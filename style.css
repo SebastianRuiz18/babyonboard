@@ -996,3 +996,87 @@ footer a:hover {
         margin-bottom: env(safe-area-inset-bottom);
     }
 }
+
+/* =========================================
+   AJUSTES DE ESPACIADO PARA MÓVIL (REDUCIR "ESPACIOS MUERTOS")
+   ========================================= */
+@media (max-width: 768px) {
+    /* 1. Reducir el padding general del contenedor principal */
+    .container {
+        padding: 2rem 1.5rem; /* Menos padding arriba/abajo y a los lados */
+    }
+
+    /* 2. Pegar más el título principal al resto */
+    .hero {
+        margin-bottom: 1.5rem;
+    }
+    .baby-name {
+        margin-bottom: 0; /* Quitar margen extra abajo del nombre */
+        line-height: 0.9; /* Apretar un poco el interlineado */
+    }
+
+    /* 3. Reducir el espacio alrededor del puntito divisor */
+    .divider-dot {
+        margin: .5rem auto; /* Estaba en 1rem auto en desktop, pero aquí lo controlamos mejor */
+    }
+
+    /* 4. Reducir drásticamente el margen de las secciones principales */
+    .event-info, 
+    .dress-code, 
+    .gift-section {
+        margin: 2rem 0; /* De 3rem o más, lo bajamos a 2rem */
+    }
+    
+    /* Ajuste específico para la primera sección después del hero */
+    .event-info {
+        margin-top: 1rem;
+    }
+
+    /* 5. Apretar los divisores ondulados */
+    .wavy-divider {
+        margin: 1.5rem 0; /* De 2.5rem lo bajamos a 1.5rem */
+    }
+
+    /* 6. Reducir espacios dentro de las tarjetas de información */
+    .info-card-elegant {
+        padding: 1.5rem 1.2rem; /* Mucho menos padding interno */
+    }
+    .info-row {
+        padding: 0.8rem 0; /* Menos espacio entre filas de info */
+    }
+    .info-label {
+        margin-bottom: 0.4rem; /* Menos espacio entre etiqueta y valor */
+    }
+    .maps-btn {
+        margin-top: 1.5rem; /* Pegar un poco más el botón */
+    }
+
+    /* 7. Apretar la sección de regalos */
+    .gift-intro {
+        margin-bottom: 1.5rem;
+    }
+    .gift-grid {
+        gap: 15px; /* Menos espacio entre las tarjetas de regalo */
+        margin-bottom: 1.5rem;
+    }
+
+    /* 8. Apretar la sección de RSVP */
+    .rsvp-editorial-section {
+        padding: 0px 0 40px 0; /* Reducir el padding inferior de 80px a 40px */
+    }
+    .rsvp-card {
+        margin-top: 20px; /* Menos espacio antes de la tarjeta */
+    }
+    .rsvp-card-inner {
+        padding: 40px 25px; /* Menos padding interno en la tarjeta de RSVP */
+    }
+    .instruction-text, .deadline-text {
+        margin-bottom: 20px;
+    }
+
+    /* 9. Pegar el footer */
+    footer {
+        padding-top: 20px; /* De 40px a 20px */
+        padding-bottom: 30px; /* Un poco de aire al final para que no se corte */
+    }
+}

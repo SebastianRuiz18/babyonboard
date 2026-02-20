@@ -1,11 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- CONFIGURACIÓN DE CAPACIDAD ---
+// --- CONFIGURACIÓN DE CAPACIDAD ---
     const PASSWORD_DB = {
-        "solo1": 1,
-        "pareja2": 2,
-        "familia3": 3,
-        "familia4": 4
+        "fam1": 1,
+        "fam2": 2,
+        "fam3": 3,
+        "fam4": 4,
+        "fam5": 5
     };
 
     // --- REFERENCIAS DOM ---
@@ -69,22 +70,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
             guestDiv.innerHTML = `
                 <div class="guest-header">
-                    <span class="guest-number">Invitado ${i}</span>
-                    ${i === 1 ? '<span class="guest-badge">(Titular)</span>' : ''}
+                    <span class="guest-number">Guest ${i}</span>
+                    ${i === 1 ? '<span class="guest-badge">(Main Guest)</span>' : ''}
                 </div>
                 
-                <label class="input-label">Nombre Completo</label>
-                <input type="text" name="Invitado_${i}_Nombre" class="rsvp-input-style" required placeholder="Nombre y Apellido">
+                <label class="input-label">Full Name</label>
+                <input type="text" name="Guest_${i}_Name" class="rsvp-input-style" required placeholder="First & Last Name">
                 
-                <label class="input-label">¿Asistirá?</label>
-                <select name="Invitado_${i}_Asistencia" class="rsvp-select-style" required>
-                    <option value="">Selecciona una opción</option>
-                    <option value="Si">¡Sí, confirmo!</option>
-                    <option value="No">No podré asistir</option>
+                <label class="input-label">Attending?</label>
+                <select name="Guest_${i}_Attendance" class="rsvp-select-style" required>
+                    <option value="">Select an option</option>
+                    <option value="Yes">Yes, I'll be there!</option>
+                    <option value="No">No, I can't make it</option>
                 </select>
 
-                <label class="input-label">Alergias o Restricciones</label>
-                <input type="text" name="Invitado_${i}_Alergias" class="rsvp-input-style" placeholder="Ej. Gluten, Ninguna">
+                <label class="input-label">Allergies or Dietary Restrictions</label>
+                <input type="text" name="Guest_${i}_Allergies" class="rsvp-input-style" placeholder="e.g., Gluten, Nuts, None">
                 
                 ${i < count ? '<div class="divider-small"></div>' : ''} 
             `;
@@ -112,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
         rsvpForm.addEventListener('submit', function(e) {
             e.preventDefault(); 
             const originalBtnText = submitBtn.innerText;
-            submitBtn.innerText = "ENVIANDO...";
+            submitBtn.innerText = "SENDING...";
             submitBtn.disabled = true;
 
             const formData = new FormData(rsvpForm);
@@ -129,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(error => {
                 console.error('Error:', error);
-                alert("Hubo un error de conexión.");
+                alert("There was a connection error.");
                 submitBtn.innerText = originalBtnText;
                 submitBtn.disabled = false;
             });

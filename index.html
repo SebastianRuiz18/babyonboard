@@ -22,64 +22,65 @@
         <header class="hero">
             <img src="img/surfboard.png" alt="Baby Shower" class="surfboard-img">
             
+            <p class="subtitle">A Little Beach Babe is on The Way</p>
             <h3 class="parents-name">Jay & Johanna</h3>
-            <p class="subtitle">celebran la llegada de</p>
+            <p class="subtitle">celebrate the arrival of</p>
             <h1 class="baby-name">Jade</h1>
         </header>
 
         <hr class="divider-dot">
 
         <section class="event-info">
-            <h2>Detalles del Evento</h2>
+            <h2>Event Details</h2>
             <div class="info-card-elegant">
                 <div class="info-row">
-                    <span class="info-label">Fecha</span>
-                    <span class="info-value">20 de Junio, 2026</span>
+                    <span class="info-label">Date</span>
+                    <span class="info-value">June 20, 2026</span>
                 </div>
                 
                 <hr class="wavy-divider">
                 
                 <div class="info-row">
-                    <span class="info-label">Hora</span>
+                    <span class="info-label">Time</span>
                     <span class="info-value">6:00 PM - 10:00 PM</span>
                 </div>
                 
                 <hr class="wavy-divider">
                 
                 <div class="info-row">
-                    <span class="info-label">Lugar</span>
+                    <span class="info-label">Location</span>
                     <span class="info-value">The Grand Loft</span>
                     <span class="info-address">57 Murray St, Elizabeth, NJ 07202</span>
                 </div>
                 
-                <a href="https://maps.app.goo.gl/MRHn3G58HyuKx4FaA" class="btn-outline maps-btn" id="maps-placeholder" target="_blank">Ver en Google Maps</a>
+                <a href="https://maps.app.goo.gl/MRHn3G58HyuKx4FaA" class="btn-outline maps-btn" id="maps-placeholder" target="_blank">View on Google Maps</a>
             </div>
         </section>
 
         <section class="dress-code">
             <h3>Dress Code</h3>
-            <p class="gift-intro"><strong>Summer Vibe.</strong> No hay reglas estrictas, ponte lo que te haga sentir más fresco, cómodo y libre para celebrar!</p>
+            <p class="gift-intro"><strong>Summer Chic. </strong>We just want you to feel comfortable and ready to celebrate. Dressy casual summer looks are perfect.</p>
         </section>
 
         <hr class="wavy-divider">
 
         <section class="gift-section">
-            <h2>Mesa de Regalos</h2>
+            <h2>Gift Table</h2>
             <p class="gift-intro">
-                Su presencia es nuestro mayor regalo. Si desean tener un detalle con Jade, 
-                agradecemos su apoyo a través de las siguientes opciones:
+                Your presence is our greatest gift. If you’d like to give Jade a little something, 
+                we truly appreciate your support through the following options:
             </p>
 
             <div class="gift-grid">
                 <div class="gift-card">
                     <h3 style="font-size: 2.8rem;">Amazon Registry</h3>
-                    <p>Lista de deseos con artículos seleccionados.</p>
-                    <a href="https://www.amazon.com/baby-reg/johanna-vasquez-august-2026-linden/299NN9ZDPIH0R" target="_blank" class="btn-outline full-width">Ver Lista</a>
+                    <p>Wish list with selected items.</p>
+                    <a href="https://www.amazon.com/baby-reg/johanna-vasquez-august-2026-linden/299NN9ZDPIH0R" target="_blank" class="btn-outline full-width">View List</a>
                 </div>
 
                 <div class="gift-card">
                     <h3 style="font-size: 2.8rem;">Zelle</h3>
-                    <p>Para aportaciones digitales voluntarias.</p>
+                    <p>For voluntary digital contributions.</p>
                     
                     <div class="qr-container">
                         <img src="img/qr-placeholder.png" alt="QR Zelle" class="qr-code">
@@ -91,11 +92,12 @@
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                         </span>
                     </div>
-                    <span id="copy-feedback" class="copy-msg hidden">¡Copiado!</span>
+                    <span id="copy-feedback" class="copy-msg hidden">¡Copied!</span>
                 </div>
             </div>
 
             <div class="envelope-note">
+                <p>We will also have an <strong>envelope box</strong> available on the day of the event for anyone who wishes to contribute.</p>
                 <p>También contaremos con buzón para <strong>Lluvia de Sobres</strong> el día del evento.</p>
             </div>
         </section>
@@ -109,20 +111,20 @@
                     <div class="rsvp-card-inner">
                         <h2 class="script-title">Rsvp</h2>
                         <p class="instruction-text">
-                            Hemos reservado un lugar especial para ti.<br>
-                            Por favor ingresa el código de acceso:
+                            We’ve reserved a special spot for you.<br>
+                            Please enter the access code:
                         </p>
                         <div class="input-wrapper-centered">
-                            <input type="text" id="rsvp-code-input" placeholder="CÓDIGO" class="rsvp-code-style">
+                            <input type="text" id="rsvp-code-input" placeholder="CODE" class="rsvp-code-style">
                         </div>
-                        <button id="rsvp-check-btn" class="editorial-btn">ENTRAR</button>
-                        <p id="rsvp-error-msg" class="error-msg hidden">Código incorrecto, intenta de nuevo.</p>
+                        <button id="rsvp-check-btn" class="editorial-btn">ENTER</button>
+                        <p id="rsvp-error-msg" class="error-msg hidden">Incorrect code, please try again.</p>
                     </div>
                 </div>
 
                 <div id="rsvp-form-view" class="rsvp-card hidden">
                     <div class="rsvp-card-inner">
-                        <h2 class="script-title-small">Confirmación</h2>
+                        <h2 class="script-title-small">Confirmation</h2>
                         
                         <form id="rsvp-form" action="https://formsubmit.co/TU-CORREO@GMAIL.COM" method="POST">
                             
@@ -135,21 +137,21 @@
                                 </div>
                             
                             <div class="common-fields">
-                                <h3 class="common-field-title">Mensaje para Jade</h3>
-                                <textarea name="Mensaje_Para_Jade" id="message" class="rsvp-input-style" rows="3" placeholder="Escribe tus mejores deseos para la bebé..."></textarea>
+                                <h3 class="common-field-title">Message for Jade</h3>
+                                <textarea name="Mensaje_Para_Jade" id="message" class="rsvp-input-style" rows="3" placeholder="Write your best wishes for the baby..."></textarea>
                             </div>
                             
-                            <button type="submit" id="submit-btn" class="editorial-btn full-width">ENVIAR CONFIRMACIÓN</button>
+                            <button type="submit" id="submit-btn" class="editorial-btn full-width">SEND CONFIRMATION</button>
                         </form>
                     </div>
                 </div>
 
                 <div id="rsvp-success-msg" class="rsvp-card hidden">
                     <div class="rsvp-card-inner flex-center">
-                        <h3 class="script-title">¡Gracias!</h3>
-                        <p class="success-text">Tu confirmación ha sido recibida.</p>
+                        <h3 class="script-title">Thanks!</h3>
+                        <p class="success-text">Your confirmation has been received.</p>
                         <div class="success-divider"></div>
-                        <p class="success-subtext">Nos vemos en Junio para celebrar a Jade.</p>
+                        <p class="success-subtext">See you in June to celebrate Jade.</p>
                     </div>
                 </div>
 
